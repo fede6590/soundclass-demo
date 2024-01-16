@@ -67,7 +67,7 @@ def main():
             audio_data = pre_process(uploaded_file)
             pred = inference(model, audio_data)
             label_pred = post_process(pred, k=1, thresh=.5)
-            st.write(f'Predicted class: {label_pred}')
+            st.write(f'Class: {label_pred[1][0]}, Probability: {label_pred[0][0]}')
 
 
 if __name__ == "__main__":
