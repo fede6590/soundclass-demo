@@ -32,10 +32,10 @@ def load_model(location):
 def pre_process(audio_path):
     with tempfile.NamedTemporaryFile(delete=False) as temp_file:
         temp_file.write(audio_path.read())
-
-    waveform, sr = torchaudio.load(temp_file)
+    waveform, sr = torchaudio.load(temp_file.name)
     if sr != 16000:
         waveform = torchaudio.transforms.Resample(sr, 16000)(waveform)
+    os.unlink(temp_file.name)
     return waveform.to(device)
 
 
@@ -64,7 +64,6 @@ def main():
             audio_data = pre_process(uploaded_file)
             prediction = inference(model, audio_data)
             st.write(f'Predicted class: {prediction}')
-            os.unlink(audio_data.name)
 
 if __name__ == "__main__":
     main()
