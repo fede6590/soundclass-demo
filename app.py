@@ -30,7 +30,10 @@ def load_model(location):
 
 
 def pre_process(audio_path):
-    waveform, sr = torchaudio.load(audio_path)
+    with tempfile.NamedTemporaryFile(delete=False) as temp_file:
+        temp_file.write(audio_path.read())
+
+    waveform, sr = torchaudio.load(temp_file)
     if sr != 16000:
         waveform = torchaudio.transforms.Resample(sr, 16000)(waveform)
     return waveform.to(device)
@@ -53,9 +56,6 @@ def main():
     uploaded_file = st.file_uploader("Choose an audio file...", type=["wav"])
 
     if uploaded_file:
-        with tempfile.NamedTemporaryFile(delete=False) as temp_file:
-            audio_bytes = uploaded_file.read()
-            temp_file.write(audio_bytes)
 
         st.audio(temp_file, format="audio/wav", start_time=0)
 
