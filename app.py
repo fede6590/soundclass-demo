@@ -3,6 +3,7 @@ import torch
 import torchaudio
 import requests
 import os
+import tempfile
 
 from BEATs.BEATs import BEATs, BEATsConfig
 
@@ -52,14 +53,18 @@ def main():
     uploaded_file = st.file_uploader("Choose an audio file...", type=["wav"])
 
     if uploaded_file:
+        with tempfile.NamedTemporaryFile(delete=False) as temp_file:
+            audio_bytes = audio_path.read()
+            temp_file.write(audio_bytes)
+            
         st.audio(uploaded_file, format="audio/wav", start_time=0)
 
         if st.button('Classify'):
             model = load_model('model.pt')
-            audio_data = pre_process(uploaded_file)
+            audio_data = pre_process(temp_file.name)
             prediction = inference(model, audio_data)
             st.write(f'Predicted class: {prediction}')
-
+            os.unlink(temp_file.name)
 
 if __name__ == "__main__":
     main()
