@@ -46,7 +46,7 @@ def inference(model, data):
 
 
 def main():
-    st.title('Audio Classification App')
+    st.title('Sound Classification app')
 
     download_model(url, 'model.pt')
     while not os.path.isfile('model.pt'):
@@ -61,8 +61,8 @@ def main():
 
         if st.button('Classify'):
             model = load_model('model.pt')
-            audio_data = pre_process(uploaded_file.name)
-            prediction = inference(model, audio_data.name)
+            audio_data = pre_process(uploaded_file)
+            prediction = inference(model, audio_data)
             st.write(f'Predicted class: {prediction}')
             os.unlink(audio_data.name)
 
