@@ -10,12 +10,12 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model = None
 url = "http://tinyurl.com/4mz5ydpj"
 k = 5
-thresh = .5
+thresh = .01
 
 
 def download_model(url, to_path):
     data = requests.get(url)
-    with open(to_path, 'wb')as file:
+    with open(to_path, 'wb') as file:
         file.write(data.content)
 
 
@@ -73,7 +73,7 @@ def main():
 
             with open('labels.json', 'r') as file:
                 labels = json.load(file)
-                for i in range(k):
+                for i in range(len(label_pred[0])):
                     st.write(f'Label: {labels[str(label_pred[1][i])]} - Prob: {round(label_pred[0][i], 2) * 100}%')
 
 
