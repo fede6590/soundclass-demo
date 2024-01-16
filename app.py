@@ -56,8 +56,8 @@ def main():
     uploaded_file = st.file_uploader("Choose an audio file...", type=["wav"])
 
     if uploaded_file:
-
-        st.audio(temp_file, format="audio/wav", start_time=0)
+        
+        st.audio(uploaded_file, format="audio/wav", start_time=0)
 
         if st.button('Classify'):
             model = load_model('model.pt')
