@@ -62,9 +62,9 @@ def main():
         if st.button('Classify'):
             model = load_model('model.pt')
             audio_data = pre_process(uploaded_file.name)
-            prediction = inference(model, audio_data)
+            prediction = inference(model, audio_data.name)
             st.write(f'Predicted class: {prediction}')
-            os.unlink(temp_file.name)
+            os.unlink(audio_data.name)
 
 if __name__ == "__main__":
     main()
