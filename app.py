@@ -75,7 +75,7 @@ def main():
             with open('labels.json', 'r') as file:
                 labels = json.load(file)
                 for i in range(len(label_pred[0])):
-                    st.write(f'Label: {labels[str(label_pred[1][i])]} - Prob: {round(label_pred[0][i], 3) * 100}%')
+                    st.write(f'Label: {labels[str(label_pred[1][i])]} - Prob: {int(round(label_pred[0][i], 2) * 100)}%')
 
 
 if __name__ == "__main__":
