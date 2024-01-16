@@ -2,6 +2,7 @@ import streamlit as st
 import torch
 import torchaudio
 import requests
+import os
 
 from BEATs.BEATs import BEATs, BEATsConfig
 
@@ -42,12 +43,16 @@ def inference(model, data):
 
 def main():
     st.title('Audio Classification App')
+    download_model(url, 'model.pt')
+
+    while not os.path.isfile('model.pt'):
+        st.write('Downloading the model...')
+
     st.write("Upload an audio file for classification")
 
     if st.button('Torchaudio backend'):
         st.write(torchaudio.get_audio_backend())
     
-    download_model(url, 'model.pt')
     uploaded_file = st.file_uploader("Choose an audio file...", type=["wav"])
 
     if uploaded_file:
