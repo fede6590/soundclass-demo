@@ -8,7 +8,8 @@ from BEATs.BEATs import BEATs, BEATsConfig
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model = None
-url = "http://tinyurl.com/4mz5ydpj"
+url = "http://tinyurl.com/5a3b7ec5"
+# url = "http://tinyurl.com/4mz5ydpj"
 k = 5
 thresh = .01
 
@@ -74,7 +75,7 @@ def main():
             with open('labels.json', 'r') as file:
                 labels = json.load(file)
                 for i in range(len(label_pred[0])):
-                    st.write(f'Label: {labels[str(label_pred[1][i])]} - Prob: {round(label_pred[0][i], 2) * 100}%')
+                    st.write(f'Label: {labels[str(label_pred[1][i])]} - Prob: {round(label_pred[0][i], 3) * 100}%')
 
 
 if __name__ == "__main__":
