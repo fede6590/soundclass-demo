@@ -2,8 +2,6 @@ import streamlit as st
 import torch
 import torchaudio
 import requests
-import os
-import tempfile
 
 from BEATs.BEATs import BEATs, BEATsConfig
 
@@ -30,12 +28,9 @@ def load_model(location):
 
 
 def pre_process(audio_path):
-    with tempfile.NamedTemporaryFile(delete=False) as temp_file:
-        temp_file.write(audio_path.read())
-    waveform, sr = torchaudio.load(temp_file.name)
+    waveform, sr = torchaudio.load(audio_path)
     if sr != 16000:
         waveform = torchaudio.transforms.Resample(sr, 16000)(waveform)
-    os.unlink(temp_file.name)
     return waveform.to(device)
 
 
@@ -49,8 +44,6 @@ def main():
     st.title('Sound Classification app')
 
     download_model(url, 'model.pt')
-    while not os.path.isfile('model.pt'):
-        st.write('Downloading the model...')
 
     st.write("Upload an audio file for classification")
     uploaded_file = st.file_uploader("Choose an audio file...", type=["wav"])
