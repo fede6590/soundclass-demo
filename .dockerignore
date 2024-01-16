@@ -1,0 +1,4 @@
+*.md
+.gitignore
+__pycache__
+*.sh
