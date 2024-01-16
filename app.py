@@ -9,6 +9,8 @@ from BEATs.BEATs import BEATs, BEATsConfig
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model = None
 url = "http://tinyurl.com/4mz5ydpj"
+k = 5
+thresh = .5
 
 
 def download_model(url, to_path):
@@ -67,11 +69,12 @@ def main():
             model = load_model('model.pt')
             audio_data = pre_process(uploaded_file)
             pred = inference(model, audio_data)
-            label_pred = post_process(pred, k=1, thresh=.5)
+            label_pred = post_process(pred, k=k, thresh=thresh)
 
             with open('labels.json', 'r') as file:
                 labels = json.load(file)
-                st.write(f'Label: {labels[str(label_pred[1][0])]} - Prob: {round(label_pred[0][0], 2) * 100}%')
+                for i in range(k):
+                    st.write(f'Label: {labels[str(label_pred[1][i])]} - Prob: {round(label_pred[0][i], 2) * 100}%')
 
 
 if __name__ == "__main__":
