@@ -70,7 +70,7 @@ def main():
 
             with open('labels.json', 'r') as file:
                 labels = json.load(file)
-            st.write(f'Class: {labels[label_pred[1][0]]}, Probability: {label_pred[0][0]}')
+                st.write(f'Class: {labels[label_pred[1][0]]}, Probability: {label_pred[0][0]}')
 
 
 if __name__ == "__main__":
