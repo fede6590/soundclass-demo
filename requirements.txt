@@ -11,3 +11,4 @@ numpy~=1.25
 ffmpeg
 torchaudio-ffmpeg
 sox
+PySoundFile
