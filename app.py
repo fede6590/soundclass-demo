@@ -1,7 +1,8 @@
 import streamlit as st
 import torch
 import torchaudio
-import requests, json
+import requests
+import json
 
 from BEATs.BEATs import BEATs, BEATsConfig
 
@@ -70,7 +71,7 @@ def main():
 
             with open('labels.json', 'r') as file:
                 labels = json.load(file)
-                st.write(f'Class: {labels[str(label_pred[1][0])]}, Probability: {label_pred[0][0]}')
+                st.write(f'Label: {labels[str(label_pred[1][0])]} - Prob: {label_pred[0][0]}')
 
 
 if __name__ == "__main__":
