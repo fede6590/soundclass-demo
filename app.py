@@ -58,5 +58,6 @@ def main():
             prediction = inference(model, audio_data)
             st.write(f'Predicted class: {prediction}')
 
+
 if __name__ == "__main__":
     main()
