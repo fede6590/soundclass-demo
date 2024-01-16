@@ -44,9 +44,6 @@ def inference(model, data):
 def main():
     st.title('Audio Classification App')
 
-    if st.button('Torchaudio backend'):
-        st.write(torchaudio.get_audio_backend())
-
     download_model(url, 'model.pt')
     while not os.path.isfile('model.pt'):
         st.write('Downloading the model...')
