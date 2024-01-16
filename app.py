@@ -54,7 +54,7 @@ def main():
 
     if uploaded_file:
         with tempfile.NamedTemporaryFile(delete=False) as temp_file:
-            audio_bytes = temp_file.read()
+            audio_bytes = uploaded_file.read()
             temp_file.write(audio_bytes)
 
         st.audio(temp_file, format="audio/wav", start_time=0)
