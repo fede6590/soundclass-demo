@@ -56,12 +56,12 @@ def main():
     uploaded_file = st.file_uploader("Choose an audio file...", type=["wav"])
 
     if uploaded_file:
-        
+
         st.audio(uploaded_file, format="audio/wav", start_time=0)
 
         if st.button('Classify'):
             model = load_model('model.pt')
-            audio_data = pre_process(temp_file.name)
+            audio_data = pre_process(uploaded_file.name)
             prediction = inference(model, audio_data)
             st.write(f'Predicted class: {prediction}')
             os.unlink(temp_file.name)
