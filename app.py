@@ -10,8 +10,6 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model = None
 url = "http://tinyurl.com/5a3b7ec5"
 # url = "http://tinyurl.com/4mz5ydpj"
-k = 5
-thresh = .01
 
 
 def download_model(url, to_path):
@@ -59,14 +57,15 @@ def main():
 
     download_model(url, 'model.pt')
 
-    st.write("Upload an audio file for classification")
-    uploaded_file = st.file_uploader("Choose an audio file...", type=["wav"])
+    uploaded_file = st.file_uploader("Upload an audio file", type=["wav"])
+    k = int(st.number_input("K (number of wanted results): ", value=5))
+    thresh = int(st.number_input("Treshold (percentage between 0 and 100): ", value=0)) / 100
 
     if uploaded_file:
 
         st.audio(uploaded_file, format="audio/wav", start_time=0)
 
-        if st.button('Classify'):
+        if st.button('Predict'):
             model = load_model('model.pt')
             audio_data = pre_process(uploaded_file)
             pred = inference(model, audio_data)
