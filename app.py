@@ -1,11 +1,19 @@
 import streamlit as st
 import torch
 import torchaudio
+import requests
 
 from BEATs.BEATs import BEATs, BEATsConfig
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model = None
+url = "http://tinyurl.com/4mz5ydpj"
+
+
+def download_model(url, to_path):
+data = requests.get(url)
+with open(to_path, 'wb')as file:
+    file.write(data.content)
 
 
 def load_model(location):
@@ -35,6 +43,8 @@ def inference(model, data):
 def main():
     st.title('Audio Classification App')
     st.write("Upload an audio file for classification")
+    
+    download_model(url, 'model.pt')
 
     uploaded_file = st.file_uploader("Choose an audio file...", type=["wav"])
 
