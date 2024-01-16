@@ -54,10 +54,10 @@ def main():
 
     if uploaded_file:
         with tempfile.NamedTemporaryFile(delete=False) as temp_file:
-            audio_bytes = audio_path.read()
+            audio_bytes = temp_file.read()
             temp_file.write(audio_bytes)
-            
-        st.audio(uploaded_file, format="audio/wav", start_time=0)
+
+        st.audio(temp_file, format="audio/wav", start_time=0)
 
         if st.button('Classify'):
             model = load_model('model.pt')
