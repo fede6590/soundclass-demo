@@ -2,14 +2,16 @@
 
 ## Demo deployment
 
-### Option 1: deployment in Streamlit Cloud (very easy but account needed)
+### Option 1: access the app with https://soundclass-demo.streamlit.app/
+
+### Option 2: manual deployment in Streamlit Cloud (very easy but account needed)
 
 Log in to https://share.streamlit.io/deploy.
 Use this repository URL and the app.py script as entry point to deploy the app. In "advanced settings", select "Python 3.11"
 
 That's it, ¡good luck!
 
-### Option 2: local deployment using Docker client (less easy and needs Docker)
+### Option 3: local deployment using Docker client (less easy and needs Docker)
 
 Make sure Docker is running, and use the Bash terminal to run the following commands:
 
