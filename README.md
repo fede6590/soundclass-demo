@@ -2,7 +2,9 @@
 
 ## Demo deployment
 
-### Option 1: access the app with https://soundclass-demo.streamlit.app/
+### Option 1: access the app with my shareable streamlit URL
+
+Simply access the app using https://soundclass-demo.streamlit.app/
 
 ### Option 2: manual deployment in Streamlit Cloud (very easy but account needed)
 
