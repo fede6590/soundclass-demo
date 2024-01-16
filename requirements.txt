@@ -9,3 +9,4 @@ torchaudio~=2.1
 streamlit
 numpy~=1.25
 ffmpeg
+torchaudio-ffmpeg

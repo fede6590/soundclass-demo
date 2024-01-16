@@ -47,6 +47,9 @@ def main():
     download_model(url, 'model.pt')
     uploaded_file = st.file_uploader("Choose an audio file...", type=["wav"])
 
+    if st.button('Torchaudio backend')
+        st.write(torchaudio.get_audio_backend())
+
     if uploaded_file:
         st.audio(uploaded_file, format="audio/wav", start_time=0)
 
