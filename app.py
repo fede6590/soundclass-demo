@@ -34,6 +34,16 @@ def pre_process(audio_path):
     return waveform.to(device)
 
 
+def post_process(pred, k, thresh):
+    topk_pred = pred.topk(k=k)
+    mask = (topk_pred.values >= thresh)
+    if True not in mask:
+        mask[0][0] = True
+    probs = topk_pred.values[mask].tolist()
+    preds = topk_pred.indices[mask].tolist()
+    return [probs, preds]
+
+
 def inference(model, data):
     with torch.no_grad():
         pred = model.extract_features(data, padding_mask=None)[0]
@@ -55,8 +65,9 @@ def main():
         if st.button('Classify'):
             model = load_model('model.pt')
             audio_data = pre_process(uploaded_file)
-            prediction = inference(model, audio_data)
-            st.write(f'Predicted class: {prediction}')
+            pred = inference(model, audio_data)
+            label_pred = post_process(pred, k=1, thresh=.5)
+            st.write(f'Predicted class: {label_pred}')
 
 
 if __name__ == "__main__":
