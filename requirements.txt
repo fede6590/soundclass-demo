@@ -4,8 +4,8 @@ torch~=2.1
 torchaudio~=2.1
 streamlit
 numpy~=1.25
-# ffmpeg
-# torchaudio-ffmpeg
-# sox
-# PySoundFile
-# soundfile
+ffmpeg
+torchaudio-ffmpeg
+sox
+PySoundFile
+soundfile
