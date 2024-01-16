@@ -8,8 +8,8 @@ from BEATs.BEATs import BEATs, BEATsConfig
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model = None
-url = "http://tinyurl.com/5a3b7ec5"
-# url = "http://tinyurl.com/4mz5ydpj"
+# url = "http://tinyurl.com/5a3b7ec5"
+url = "http://tinyurl.com/4mz5ydpj"
 k = 5
 thresh = .01
 
