@@ -11,9 +11,9 @@ url = "http://tinyurl.com/4mz5ydpj"
 
 
 def download_model(url, to_path):
-data = requests.get(url)
-with open(to_path, 'wb')as file:
-    file.write(data.content)
+    data = requests.get(url)
+    with open(to_path, 'wb')as file:
+        file.write(data.content)
 
 
 def load_model(location):
@@ -45,7 +45,6 @@ def main():
     st.write("Upload an audio file for classification")
     
     download_model(url, 'model.pt')
-
     uploaded_file = st.file_uploader("Choose an audio file...", type=["wav"])
 
     if uploaded_file:
