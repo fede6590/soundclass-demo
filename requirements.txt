@@ -1,15 +1,11 @@
-# -f https://download.pytorch.org/whl/cpu/torchaudio-2.1.2%2Bcpu-cp311-cp311-linux_x86_64.whl
-# -f https://download.pytorch.org/whl/cpu/torch-2.1.2%2Bcpu-cp311-cp311-linux_x86_64.whl
--f https://download.pytorch.org/whl/torch_stable.html
--f https://download.pytorch.org/whl/torchaudio_stable.html
-torch~=2.1+cpu
-torchaudio~=2.1+cpu
-# torch~=2.1
-# torchaudio~=2.1
+-f https://download.pytorch.org/whl/cpu/torchaudio-2.1.2%2Bcpu-cp311-cp311-linux_x86_64.whl
+-f https://download.pytorch.org/whl/cpu/torch-2.1.2%2Bcpu-cp311-cp311-linux_x86_64.whl
+torch~=2.1
+torchaudio~=2.1
 streamlit
 numpy~=1.25
-ffmpeg
-torchaudio-ffmpeg
-sox
-PySoundFile
-soundfile
+# ffmpeg
+# torchaudio-ffmpeg
+# sox
+# PySoundFile
+# soundfile
