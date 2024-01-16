@@ -1,7 +1,7 @@
 import streamlit as st
 import torch
 import torchaudio
-import requests
+import requests, json
 
 from BEATs.BEATs import BEATs, BEATsConfig
 
@@ -67,7 +67,10 @@ def main():
             audio_data = pre_process(uploaded_file)
             pred = inference(model, audio_data)
             label_pred = post_process(pred, k=1, thresh=.5)
-            st.write(f'Class: {label_pred[1][0]}, Probability: {label_pred[0][0]}')
+
+            with open('labels.json', 'r') as file:
+                labels = json.load(file)
+            st.write(f'Class: {labels[label_pred[1][0]]}, Probability: {label_pred[0][0]}')
 
 
 if __name__ == "__main__":
