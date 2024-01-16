@@ -59,8 +59,8 @@ def main():
 
     uploaded_file = st.file_uploader("Upload an audio file", type=["wav"])
     k = int(st.number_input("K (number of wanted results): ", value=5))
-    thresh = int(st.number_input("Treshold (percentage between 0 and 100): ", value=0)) / 100
-    st.write("* if no prob is greater than the treshold, it returns one most probable result")
+    thresh = int(st.number_input("Treshold (percentage between 0 and 100)**: ", value=0)) / 100
+    st.write("** if no prob is greater than the treshold, it returns the one most probable result")
     if uploaded_file:
 
         st.audio(uploaded_file, format="audio/wav", start_time=0)
