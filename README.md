@@ -9,7 +9,7 @@ Simply access the app using https://soundclass-demo.streamlit.app/
 ### Option 2: manual deployment in Streamlit Cloud (very easy but account needed)
 
 Log in to https://share.streamlit.io/deploy.
-Use this repository URL and the app.py script as entry point to deploy the app. In "advanced settings", select "Python 3.11"
+Clone the repository, use the URL to deploy the app, and the app.py script as entry point to deploy the app. In "advanced settings", select "Python 3.11"
 
 That's it, ¡good luck!
 
